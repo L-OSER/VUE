@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="cn-zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+    <script type="text/javascript" src="http://img.qudache.cn/js/vue.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <title>Vue中的插槽（slot）</title>
+</head>
+<body>
+<!--<div id="root">
+    <child content="<p>Dell</p>">
+
+    </child>
+    &lt;!&ndash; <slot>默认</slot> 如果child没有插入东西，会显示slot里面的的内容&ndash;&gt;
+</div>-->
+<div id="root">
+    <child content="<p>Dell</p>">
+        <div class="header" slot="header">header</div>
+        <div class="footer" slot="footer">footer</div>
+    </child>
+    <!-- 给<slot>起名字区分-->
+</div>
+<script>
+
+
+    Vue.component("child", {
+        template: `<div>
+                    <slot name="header"></slot>
+                    <slot name="footer"></slot>
+                    </div>`,
+        props: ['content'],
+        data: function () {
+            return {}
+        },
+        methods: {
+
+        },
+        mounted: function () {
+            var _this = this;
+
+        }
+    });
+    var vm = new Vue({
+        el: "#root",
+        methods: {}
+    })
+</script>
+</body>
+</html>

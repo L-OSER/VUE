@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="cn-zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+    <script type="text/javascript" src="http://img.qudache.cn/js/vue.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <title>非父组件间传值</title>
+</head>
+<body>
+<div id="root">
+    <child content="Dell"></child>
+    <child content="Lee"></child>
+</div>
+<script>
+
+    Vue.prototype.bus = new Vue();
+
+    Vue.component("child", {
+        template: '<div @click="handle_click">{{selfContent}}</div>',
+        props:{
+            content:String
+        },
+        data:function(){
+          return {
+              selfContent:this.content
+          }
+        },
+        methods: {
+          handle_click:function(){
+              this.bus.$emit('change',this.content)
+          }
+        },
+        mounted:function(){
+            var _this = this;
+            this.bus.$on('change',function(msg){
+                _this.selfContent = msg;
+            })
+        }
+    });
+    var vm = new Vue({
+        el: "#root",
+        methods: {
+
+        }
+    })
+</script>
+</body>
+</html>
