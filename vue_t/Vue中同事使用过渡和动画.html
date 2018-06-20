@@ -5,23 +5,18 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+
     <script type="text/javascript" src="http://img.qudache.cn/js/vue.min.js"></script>
     <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/animate.css/3.5.2/animate.css">
     <title>Vue中CSS动画原理</title>
     <style>
-        .fade-enter{
+        .fade-enter,.fade-leave-to{
             opacity: 0;
         }
-        .fade-enter-active{
-            transition: opacity 1s;
-        }
-        .fade-leave-to{
-            opacity: 0;
-        }
+        .fade-enter-active,
         .fade-leave-active{
-            transition: opacity 1s;
+            transition: opacity 3s;
         }
     </style>
 </head>
@@ -63,10 +58,24 @@
 
 -->
 <div id="root">
-    <transition name="fade"><!--把有动画效果的包裹在transition标签里，如果不写name，class默认v-enter-->
-   <div v- show="show">holle word</div>
+    <transition
+               :d
+                type="transition"
+                name="fade"
+                appear
+                enter-active-class="animated swing fade-enter-active"
+                leave-active-class="animated shake fade-leave-active"
+                appear-actuve-class="animated swing">
+        <!--引入使用animation库，后面引用相对应的动画的class-->
+        <!--首次进入页面执行动画需要添加appera属性以及appear-actuve-class-->
+        <!--
+          type :如果动画里有过渡又有动画，自己手动定义时长按照哪个类型
+          appaer :入场执行，
+          appear-actuve-class：入场执行哪个class
+        -->
+        <div v-show="hide">hello word</div>
     </transition>
-    <button @click="handleClick">切换</button>
+    <button @click="handClick">切换</button>
 </div>
 <script>
 
@@ -78,11 +87,15 @@
     var vm = new Vue({
         el: "#root",
         data:{
-            show:true
+            show:true,
+            hide:true
         },
         methods: {
             handleClick:function(){
                 this.show = !this.show;
+            },
+            handClick:function(){
+                this.hide = !this.hide;
             }
 
         }
