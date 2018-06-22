@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* 禁用iPhone中Safari的字号自动调整 */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body{
+  font-size:12px !important;
+}
+.joy-bandage{
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid #4A77AC;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;
+  position: relative;
+}
+.joy-bandage-path{
+  position: absolute;
+  left:0;
+  top:0;
+}
+.joy-bandage .glyphicon-user{
+  color: #4A77AC;
+  margin-right: 5px;
+}
+.glyphicon-arrow-right{
+  font-size: 12px;
+  color: #999;
+}
+/* 去除iPhone中默认的input样式 */
+input[type="submit"],
+
+input[type="reset"],
+
+input[type="button"]{-webkit-appearance:none; resize: none;outline:none;}
+
+/* 取消链接高亮  */
+select{outline:none;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article,
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); }
+/* 设置HTML5元素为块 */
+article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section {
+  display: block;
+}
+/* 图片自适应 */
+img {
+  max-width: 100%;
+  height: auto;
+  width:auto\9; /* ie8 */
+  -ms-interpolation-mode:bicubic;/*为了照顾ie图片缩放失真*/
+  display:block;
+}
+/* 初始化 */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article,
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{margin:0; padding:0; border:none;}
+body{font: normal 14px/1.5 Verdana,"Tahoma","Arial",Times,"New Roman",STXihei,hei;color:#666;}
+em,i{font-style:normal;}
+
+strong{font-weight: normal;}
+.clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
+.clearfix{zoom:1;}
+a{text-decoration:none; color:#5a5a5a; font-family: "Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei",sans-serif;}
+a:hover{text-decoration:none;}
+ul,ol{list-style:none;}
+h1, h2, h3, h4, h5, h6{ font-size:100%; font-family:  Verdana,"Tahoma","Arial",Times,"New Roman";}
+img{border: none;}
+input{
+
+  outline:none;
+
+}
