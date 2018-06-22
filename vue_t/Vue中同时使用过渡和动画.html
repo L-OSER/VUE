@@ -11,24 +11,12 @@
     <link rel="stylesheet" href="http://cdn.staticfile.org/animate.css/3.5.2/animate.css">
     <title>Vue中CSS动画原理</title>
     <style>
-        @keyframes bounce-in {
-            0% {
-                transform: scale(0);
-            }
-            50% {
-                transform: scale(1.5);
-            }
-            100% {
-                transform: scale(1);
-            }
+        .fade-enter,.fade-leave-to{
+            opacity: 0;
         }
-        .active{
-            transform-origin: left center;/*以防在浏览器放大缩小出问题*/
-            animation: bounce-in 1s;
-        }
-        .leave{
-            transform-origin: left center;/*以防在浏览器放大缩小出问题*/
-            animation: bounce-in 1s reverse; /*反向执行*/
+        .fade-enter-active,
+        .fade-leave-active{
+            transition: opacity 3s;
         }
     </style>
 </head>
@@ -70,16 +58,22 @@
 
 -->
 <div id="root">
-    <!--更改class名字-->
-    <transition name="fade" enter-active-class="active" leave-active-class="leave"><!--把有动画效果的包裹在transition标签里，如果不写name，class默认v-enter-->
-        <div v-show="show">hello word</div>
-    </transition>
-    <button @click="handleClick">切换</button>
-
-
     <transition
-                enter-active-class="animated swing"
-                leave-active-class="animated shake"><!--引入使用animation库，后面引用相对应的动画的class-->
+               :duration="{enter:5000,leave:10000}"
+                type="transition"
+                name="fade"
+                appear
+                enter-active-class="animated swing fade-enter-active"
+                leave-active-class="animated shake fade-leave-active"
+                appear-actuve-class="animated swing">
+        <!--引入使用animation库，后面引用相对应的动画的class-->
+        <!--首次进入页面执行动画需要添加appera属性以及appear-actuve-class-->
+        <!--
+          :duration :入场动画时长，出场动画时长，或者统一时长直接 :duration = "number"
+          type :如果动画里有过渡又有动画，自己手动定义时长按照哪个类型
+          appaer :入场执行，
+          appear-actuve-class：入场执行哪个class
+        -->
         <div v-show="hide">hello word</div>
     </transition>
     <button @click="handClick">切换</button>

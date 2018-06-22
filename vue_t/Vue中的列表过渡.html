@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="cn-zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script type="text/javascript" src="http://img.qudache.cn/js/vue.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/animate.css/3.5.2/animate.css">
+    <title>Vue中的列表过渡</title>
+    <style>
+     .v-enter,.v-leave-to{
+         opacity: 0;
+     }
+        .v-enter-active,.v-leave-active{
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+<!--
+  动画进场
+
+  添加fade-enter
+  添加fade-enter-active
+
+
+  开始
+
+  去除fade-enter
+  添加fade-enter-to
+
+  结束
+
+  去除fade-enter-active
+  去除fade-enter-to
+-->
+
+<!--
+  动画退出
+
+  添加fade-leave
+  添加fade-leave-active
+
+
+  开始
+
+  去除fade-leave
+  添加fade-leave-to
+
+  结束
+
+  去除fade-leave-active
+  去除fade-leave-to
+
+-->
+<div id="root">
+    <transition-group>
+     <div v-for="item of list" :key="item.id">
+         {{item.title}}
+     </div>
+    </transition-group>
+    <button @click="handClick">Add</button>
+</div>
+<script>
+   var count =0;
+
+    Vue.component("child-one", {
+        template: `<div v-once>child-one</div>`
+    });
+
+    var vm = new Vue({
+        el: "#root",
+        data:{
+            list:[]
+        },
+        methods: {
+         handClick:function(){
+             this.list.push({
+                 id:count++,
+                 title:'hello word'
+             })
+         }
+        }
+    })
+</script>
+</body>
+</html>
