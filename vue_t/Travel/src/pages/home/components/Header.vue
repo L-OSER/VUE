@@ -46,6 +46,5 @@ export default {
       float: right
       text-align :center
       .arrow-icon
-       margin-left:-0.4rem
        font-size :.24rem
 </style>
