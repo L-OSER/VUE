@@ -9,7 +9,6 @@
         <div class="item-info">
           <p class="item-title" v-text="item.title"></p>
           <p class="item-desc" v-text="item.desc"></p>
-          <button class="item-button">查看详情</button>
         </div>
       </li>
     </ul>
@@ -17,22 +16,22 @@
 </template>
 <script>
 export default {
-  name: 'HomeRecommend',
+  name: 'HomeWeekend',
   data () {
     return {
       recommendList: [{
         id: '0001',
-        imgUrl: 'https://imgs.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg',
+        imgUrl: 'https://imgs.qunarzz.com/sight/source/1505/aa/7baaf8a851d221.jpg_r_640x214_1431200f.jpg',
         title: '大连亚圣海洋世界',
         desc: '浪漫大连首站，浪漫的海洋主题公园'
       }, {
         id: '0002',
-        imgUrl: 'https://imgs.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg',
+        imgUrl: 'https://imgs.qunarzz.com/sight/source/1505/9e/21df651e19af5d.jpg_r_640x214_3ea5bb38.jpg',
         title: '大连亚圣海洋世界',
         desc: '浪漫大连首站，浪漫的海洋主题公园'
       }, {
         id: '0003',
-        imgUrl: 'https://imgs.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg',
+        imgUrl: 'https://imgs.qunarzz.com/sight/source/1505/aa/7baaf8a851d221.jpg_r_640x214_1431200f.jpg',
         title: '大连亚圣海洋世界',
         desc: '浪漫大连首站，浪漫的海洋主题公园'
       }]
@@ -48,33 +47,17 @@ export default {
     text-indent: .2rem
     margin-top: 0.2rem
 
-  .item
-    display: flex
-    overflow: hidden
-    height: 1.9rem
-    .item-img
-      width: 1.7rem
-      height: 1.7rem
-      padding: .1rem
-    .item-info
-      flex: 1
-      padding: .1rem
-      min-width: 0
-    .item-title
-      line-height: .54rem
-      font-size: .32rem
-      ellipsis()
-    .item-desc
-      color: #ccc
-      line-height: .4rem
-      ellipsis()
-    .item-button
-      margin-top: .2rem
-      background: #ff9300
-      border-radius: .06rem
-      color: #fff
-      padding: 0 .2rem;
-      margin-top: .16rem
-      line-height: .44rem
+   .item-img
+     width: 100%
+   .item-info
+     padding: .1rem
+   .item-title
+     line-height: .54rem
+     font-size: .32rem
+     ellipsis()
+   .item-desc
+     color: #ccc
+     line-height: .4rem
+     ellipsis()
 
 </style>
