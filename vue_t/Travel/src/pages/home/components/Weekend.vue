@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="title">热销推荐</div>
+    <div class="title">周末去哪儿</div>
     <ul>
-      <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item in list" :key="item.id">
         <div class="item-img-wrapper">
           <img class="item-img" :src="item.imgUrl" alt="">
         </div>
@@ -17,6 +17,9 @@
 <script>
 export default {
   name: 'HomeWeekend',
+  props: {
+    list: Array
+  },
   data () {
     return {
       recommendList: [{
