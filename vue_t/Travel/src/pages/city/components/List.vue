@@ -5,13 +5,13 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.currentCity}}</div>
           </div>
         </div>
 
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item in hot" :key="item.id">
+          <div class="button-wrapper" v-for="item in hot" :key="item.id" @click="handleCityClick(item.name)">
             <div class="button" v-text="item.name"></div>
           </div>
         </div>
@@ -19,7 +19,11 @@
       <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
       <div class="title border-topbottom" v-text="key"></div>
       <div class="item-list">
-        <div v-for="innerItem of item" :key="innerItem.id" class="item border-bottom" v-text="innerItem.name">阿拉尔</div>
+        <div v-for="innerItem of item"
+             :key="innerItem.id"
+             class="item border-bottom"
+             v-text="innerItem.name"
+             @click="handleCityClick(innerItem.name)">阿拉尔</div>
       </div>
     </div>
     </div>
@@ -27,6 +31,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
@@ -34,6 +39,26 @@ export default {
     hot: Array,
     cities: Object,
     letter: String
+  },
+  computed: {
+    // 把vuex里公用的数据映射到我们的currentCity里
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
+  methods: {
+    // handleCityClick (city) {
+    //   this.$store.dispatch('changeCity', city)
+    // }
+    handleCityClick (city) {
+      // 直接调用
+      // this.$store.commit('changeCity', city)
+      // 映射后直接传city
+      this.changeCity(city)
+      this.$router.push('./')
+    },
+    // vuex的mutations叫changeCity，把它映射到我们的changeCity
+    ...mapMutations(['changeCity'])
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
