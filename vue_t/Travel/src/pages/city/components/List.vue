@@ -23,7 +23,7 @@
              :key="innerItem.id"
              class="item border-bottom"
              v-text="innerItem.name"
-             @click="handleCityClick(innerItem.name)">阿拉尔</div>
+             @click="handleCityClick(innerItem.name)"></div>
       </div>
     </div>
     </div>
