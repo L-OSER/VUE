@@ -35,6 +35,7 @@ export default {
     }
   },
   computed: {
+    // 获取公用数据的city
     ...mapState(['city'])
   },
   methods: {
@@ -54,6 +55,7 @@ export default {
   },
   mounted () {
     this.getHomeInfo()
+    // 将城市名字赋值lastCity
     this.lastCity = this.city
   },
   activated () {
