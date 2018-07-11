@@ -37,7 +37,12 @@ export default {
     }
   },
   activated () {
+    // 页面展示的时候绑定事件
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactuvated () {
+    // 页面消失的时候解除绑定
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
