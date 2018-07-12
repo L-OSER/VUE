@@ -5,10 +5,11 @@
         v-text="item"
         :ref="item"
         @click="handleLetterClick"
-        @touchstart="handleTouchStart"
+        @touchstart.prevent="handleTouchStart"
         @touchmove="handleTouchMove"
         @touchend="handleTouchEnd"
     ></li>
+    <!-- @touchstart.prevent阻止默认拖动行为，防止拉动字母，整体也跟着动 -->
   </ul>
 </template>
 
